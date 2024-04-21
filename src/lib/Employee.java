@@ -17,25 +17,24 @@ public class Employee {
 
 	private boolean Foreigner;
 	private boolean gender; // true = Laki-laki, false = Perempuan
+	private boolean IsMarried;
 
 	private int monthlySalary;
 	private int otherMonthlyIncome;
 	private int annualDeductible;
 
-	private String spouseName;
-	private String spouseIdNumber;
-
 	private List<String> childNames;
 	private List<String> childIdNumbers;
 
 	public Employee(String employeeId, String EmployeeName, String idNumber, String address,
-			String DateJoined, boolean Foreigner, boolean gender) {
+			String DateJoined, boolean Foreigner, boolean gender, boolean IsMarried) {
 		this.employeeId = employeeId;
 		this.EmployeeName = EmployeeName;
 		this.idNumber = idNumber;
 		this.address = address;
 		this.Foreigner = Foreigner;
 		this.gender = gender;
+		this.IsMarried = IsMarried;
 
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		this.DateJoined = LocalDate.parse(DateJoined, formatter);
@@ -80,11 +79,6 @@ public class Employee {
 		this.otherMonthlyIncome = income;
 	}
 
-	public void setSpouse(String spouseName, String spouseIdNumber) {
-		this.spouseName = spouseName;
-		this.spouseIdNumber = idNumber;
-	}
-
 	public void addChild(String childName, String childIdNumber) {
 		childNames.add(childName);
 		childIdNumbers.add(childIdNumber);
@@ -107,6 +101,6 @@ public class Employee {
 		}
 
 		return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible,
-				spouseIdNumber.equals(""), childIdNumbers.size());
+				IsMarried, childIdNumbers.size());
 	}
 }
