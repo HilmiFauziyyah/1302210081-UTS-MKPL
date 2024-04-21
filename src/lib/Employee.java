@@ -1,7 +1,7 @@
 package lib;
 
 import java.time.LocalDate;
-import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,9 +12,7 @@ public class Employee {
 	private String idNumber;
 	private String address;
 
-	private int yearJoined;
-	private int monthJoined;
-	private int dayJoined;
+	private LocalDate DateJoined;
 	private int monthWorkingInYear;
 
 	private boolean isForeigner;
@@ -31,16 +29,17 @@ public class Employee {
 	private List<String> childIdNumbers;
 
 	public Employee(String employeeId, String EmployeeName, String idNumber, String address,
-			int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, boolean gender) {
+			String DateJoined, boolean isForeigner, boolean gender) {
 		this.employeeId = employeeId;
 		this.EmployeeName = EmployeeName;
 		this.idNumber = idNumber;
 		this.address = address;
-		this.yearJoined = yearJoined;
-		this.monthJoined = monthJoined;
-		this.dayJoined = dayJoined;
 		this.isForeigner = isForeigner;
 		this.gender = gender;
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		this.DateJoined = LocalDate.parse(DateJoined, formatter);
+		;
 
 		childNames = new LinkedList<String>();
 		childIdNumbers = new LinkedList<String>();
@@ -101,8 +100,8 @@ public class Employee {
 
 		LocalDate date = LocalDate.now();
 
-		if (date.getYear() == yearJoined) {
-			monthWorkingInYear = date.getMonthValue() - monthJoined;
+		if (date.getYear() == DateJoined.getYear()) {
+			monthWorkingInYear = date.getMonthValue() - DateJoined.getMonthValue();
 		} else {
 			monthWorkingInYear = 12;
 		}
