@@ -19,10 +19,13 @@ public class TaxFunction {
 	 * Jika pegawai sudah memiliki anak maka penghasilan tidak kena pajaknya
 	 * ditambah sebesar Rp 4.500.000 per anak sampai anak ketiga.
 	 * 
+	 * @param annualDeductible
+	 * @param monthWorkingInYear
+	 * 
 	 */
 
 	public static int calculateTax(int Salary, int deductible,
-			boolean isMarried, int numberOfChildren) {
+			int monthWorkingInYear, int annualDeductible, boolean isMarried, int numberOfChildren) {
 
 		int tax = (int) Math.round(0.05 * (Salary - deductible - 54000000));
 
