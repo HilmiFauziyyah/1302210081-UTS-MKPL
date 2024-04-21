@@ -15,7 +15,7 @@ public class Employee {
 	private LocalDate DateJoined;
 	private int monthWorkingInYear;
 
-	private boolean isForeigner;
+	private boolean Foreigner;
 	private boolean gender; // true = Laki-laki, false = Perempuan
 
 	private int monthlySalary;
@@ -29,12 +29,12 @@ public class Employee {
 	private List<String> childIdNumbers;
 
 	public Employee(String employeeId, String EmployeeName, String idNumber, String address,
-			String DateJoined, boolean isForeigner, boolean gender) {
+			String DateJoined, boolean Foreigner, boolean gender) {
 		this.employeeId = employeeId;
 		this.EmployeeName = EmployeeName;
 		this.idNumber = idNumber;
 		this.address = address;
-		this.isForeigner = isForeigner;
+		this.Foreigner = Foreigner;
 		this.gender = gender;
 
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -56,17 +56,17 @@ public class Employee {
 	public void setMonthlySalary(int grade) {
 		if (grade == 1) {
 			monthlySalary = 3000000;
-			if (isForeigner) {
+			if (Foreigner) {
 				monthlySalary = (int) (3000000 * 1.5);
 			}
 		} else if (grade == 2) {
 			monthlySalary = 5000000;
-			if (isForeigner) {
+			if (Foreigner) {
 				monthlySalary = (int) (3000000 * 1.5);
 			}
 		} else if (grade == 3) {
 			monthlySalary = 7000000;
-			if (isForeigner) {
+			if (Foreigner) {
 				monthlySalary = (int) (3000000 * 1.5);
 			}
 		}
